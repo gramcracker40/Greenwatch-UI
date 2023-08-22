@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+
+import LoginPage from './components/login/login';
+import HomePage from './components/home/home';
+import AuthContext from './context/auth-context';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    
+    function loginHandler() {
+        setIsLoggedIn(true); 
+    }
+
+    return (
+        <AuthContext.Provider value={{isLoggedIn: isLoggedIn}}>
+            {!isLoggedIn && <LoginPage onLogin={loginHandler}/>}
+            {isLoggedIn && <HomePage/>}
+        </AuthContext.Provider>
+    )
 }
 
 export default App;
+
