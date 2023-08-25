@@ -1,5 +1,5 @@
 export const defHeaders = {'Content-Type': 'application/json'}
-export const loginURL = "http://127.0.0.1:5000/login"
+export const loginURL = "http://192.168.1.23/login"
 
 export async function EasyRequest(url = "127.0.0.1:5000",
     headers = { 'Content-Type': 'application/json' }, method = "GET", body=false) {
