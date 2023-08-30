@@ -1,10 +1,11 @@
-export const defHeaders = {'Content-Type': 'application/json'}
-export const loginURL = "http://192.168.1.23/login"
+export const defHeaders = { 'Content-Type': 'application/json' };
+export const loginURL = "http://192.168.1.23/login";
+export const instanceURL = "http://192.168.1.23";
 
 export async function EasyRequest(url = "127.0.0.1:5000",
-    headers = { 'Content-Type': 'application/json' }, method = "GET", body=false) {
-    
-    try{  
+    headers = { 'Content-Type': 'application/json' }, method = "GET", body = false) {
+
+    try {
         let options = '';
         if (body) {
             options = {
@@ -20,14 +21,14 @@ export async function EasyRequest(url = "127.0.0.1:5000",
         }
 
         const req = await fetch(url, options);
-        const res_data = await req.json(); 
-        
-        return {data: res_data, status: req.status};
+        const res_data = await req.json();
+
+        return { data: res_data, status: req.status };
 
     } catch (error) {
         console.log(`An ERROR: --> ${error}`);
     }
-    
+
 }
 
 

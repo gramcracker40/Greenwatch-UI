@@ -31,7 +31,7 @@ const roomsData = [
 
 function RoomList() {
   return (
-    <ul className=" space-y-5 w-3/5 border-solid border-2 border-slate-200 rounded-md">
+    <ul className=" space-y-5 w-3/5 ">
       {roomsData.map((room) => (
         <li
           key={room.name}

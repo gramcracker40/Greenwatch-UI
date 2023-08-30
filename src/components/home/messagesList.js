@@ -78,9 +78,10 @@ const messages = [
 
 export default function MessagesList() {
   return (
-    <ul className="divide-y divide-gray-400 w-2/5 border-solid border-2 border-slate-200 rounded-md">
+    <ul className="divide-y divide-gray-300 w-2/5 border-solid border-5 border-slate-200 overflow-hidden rounded-lg shadow">
       {messages.map((message) => (
         <MessageObj
+          key={message.id}
           id={message.id}
           user_id={message.user_id}
           room_id={message.room_id}

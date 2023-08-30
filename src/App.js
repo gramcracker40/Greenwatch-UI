@@ -1,4 +1,4 @@
-import { useState } from 'react'; 
+import { useContext, useState } from 'react'; 
 
 import LoginPage from "./components/login/login"
 import HomePage from "./components/home/home";
@@ -8,22 +8,14 @@ import './index.css';
 
 
 function App() {
-  const [loggedIn, loggedInHandler] = useState(false);
+  const userInfo = useContext(AuthContext);
 
-  function loginHandler() {
-    loggedInHandler(true);
-  }
-
-  function logoutHandler() {
-    loggedInHandler(false); 
-  }
-
+  
   return (
-    <div>
-      {!loggedIn && <LoginPage onLogin={loginHandler}/>}
-      {loggedIn && <HomePage onLogout={logoutHandler}/>}
-    </div>
-      
+    <>
+      {userInfo.isLoggedIn && <HomePage/>}
+      {!userInfo.isLoggedIn && <LoginPage/>}
+    </>
   );
 }
 
