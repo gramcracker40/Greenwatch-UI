@@ -10,12 +10,13 @@ import './index.css';
 function App() {
   const userInfo = useContext(AuthContext);
 
+  const authDetails = JSON.parse(localStorage.getItem("authDetails"))
   
   return (
-    <>
+    <AuthContext.Provider value={authDetails}>
       {userInfo.isLoggedIn && <HomePage/>}
       {!userInfo.isLoggedIn && <LoginPage/>}
-    </>
+    </AuthContext.Provider>
   );
 }
 

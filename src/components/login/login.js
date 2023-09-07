@@ -6,7 +6,7 @@ import HomePage from "../home/home";
 import '../../index.css';
 
 
-export default function LoginPage(props) {
+export default function LoginPage() {
   const usernameRef = useRef('');
   const passwordRef = useRef('');
   const [loginAttempts, setLoginAttempts] = useState(0);
@@ -35,14 +35,15 @@ export default function LoginPage(props) {
       console.log(req.status)
       if (req.status === 200) {
         setInvalidCredentials(false);
-        setAuthDetails({
+        
+        const authDetails = {
           isLoggedIn: true,
           accessToken: req.data.access_token,
           refreshToken: req.data.refresh_token,
           userID: req.data.user_id
-        });
-        props.reRender(); 
-
+        }
+        setAuthDetails(authDetails);
+        localStorage.setItem("authDetails", JSON.stringify(authDetails))
       }
       else if (req.status === 401) {
         setInvalidCredentials(true);
