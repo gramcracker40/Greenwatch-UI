@@ -11,11 +11,11 @@ function App() {
   const userInfo = useContext(AuthContext);
 
   const authDetails = JSON.parse(localStorage.getItem("authDetails"))
-  
+  //<LoginPage/>
   return (
     <AuthContext.Provider value={authDetails}>
       {userInfo.isLoggedIn && <HomePage/>}
-      {!userInfo.isLoggedIn && <LoginPage/>}
+      {!userInfo.isLoggedIn && <HomePage/>}
     </AuthContext.Provider>
   );
 }
